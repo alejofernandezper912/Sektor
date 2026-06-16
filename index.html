@@ -1,0 +1,256 @@
+
+<style>
+  @font-face {
+    font-family: 'Neue Haas Grotesk Display Pro';
+    src: url('NeueHaasDisplayLight.otf') format('opentype');
+    font-weight: 300; font-style: normal;
+  }
+  @font-face {
+    font-family: 'Neue Haas Grotesk Display Pro';
+    src: url('NeueHaasDisplayLightItalic.otf') format('opentype');
+    font-weight: 300; font-style: italic;
+  }
+  @font-face {
+    font-family: 'Neue Haas Grotesk Display Pro';
+    src: url('NeueHaasDisplayRoman.otf') format('opentype');
+    font-weight: 400; font-style: normal;
+  }
+  @font-face {
+    font-family: 'Neue Haas Grotesk Display Pro';
+    src: url('NeueHaasDisplayRomanItalic.otf') format('opentype');
+    font-weight: 400; font-style: italic;
+  }
+  @font-face {
+    font-family: 'Neue Haas Grotesk Display Pro';
+    src: url('NeueHaasDisplayMediu.otf') format('opentype');
+    font-weight: 500; font-style: normal;
+  }
+  @font-face {
+    font-family: 'Neue Haas Grotesk Display Pro';
+    src: url('NeueHaasDisplayMediumItalic.otf') format('opentype');
+    font-weight: 500; font-style: italic;
+  }
+  @font-face {
+    font-family: 'Neue Haas Grotesk Display Pro';
+    src: url('NeueHaasDisplayBold.otf') format('opentype');
+    font-weight: 700; font-style: normal;
+  }
+  @font-face {
+    font-family: 'Neue Haas Grotesk Display Pro';
+    src: url('NeueHaasDisplayBoldItalic.otf') format('opentype');
+    font-weight: 700; font-style: italic;
+  }
+  @font-face {
+    font-family: 'Neue Haas Grotesk Display Pro';
+    src: url('NeueHaasDisplayBlack.otf') format('opentype');
+    font-weight: 900; font-style: normal;
+  }
+  @font-face {
+    font-family: 'Neue Haas Grotesk Display Pro';
+    src: url('NeueHaasDisplayBlackItalic.otf') format('opentype');
+    font-weight: 900; font-style: italic;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  .site {
+    background: #000;
+    color: #fff;
+    font-family: 'Neue Haas Grotesk Display Pro', 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background: #000;
+  }
+  .hero.blue-mode { background: #1400FF; }
+
+  .hero-logo {
+    width: clamp(280px, 50vw, 560px);
+    user-select: none;
+    position: relative;
+    z-index: 2;
+  }
+
+  .origen-title img {
+    display: block;
+    width: clamp(180px, 32vw, 360px);
+    margin-bottom: 4px;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    opacity: 0.25;
+    z-index: 2;
+    color: #fff;
+    font-weight: 400;
+    animation: bounce 2s infinite;
+  }
+  .hero.blue-mode .hero-scroll { color: #E8001A; }
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(7px); }
+  }
+
+  /* ORIGEN */
+  .section-origen {
+    background: #000000;
+    padding: 100px 8% 120px;
+  }
+  .origen-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .origen-tag {
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #fff;
+    opacity: 0.35;
+    font-weight: 400;
+  }
+  .origen-logo-accent {
+    width: 72px;
+    opacity: 0.25;
+  }
+  .origen-title {
+    font-size: clamp(52px, 9vw, 110px);
+    font-weight: 750;
+    line-height: 0.95;
+    letter-spacing: 1px;
+    color: #fff;
+    margin-bottom: 52px;
+  }
+
+  .origen-block p {
+    font-size: clamp(16px, 2.4vw, 21px);
+    line-height: 1.72;
+    color: rgba(255,255,255,0.72);
+    font-weight: 400;
+    max-width: 720px;
+    margin-bottom: 28px;
+  }
+  .origen-block p:last-child { margin-bottom: 0; }
+
+  /* FLASH */
+  .section-flash { line-height: 0; }
+  #flash-obj { display: block; width: 100%; aspect-ratio: 16/9; }
+
+  /* CAROUSEL */
+  .section-carousel {
+    position: relative;
+    overflow: hidden;
+    line-height: 0;
+    background: #000;
+  }
+  .carousel-wrap {
+    position: relative;
+    aspect-ratio: 16/9;
+  }
+  .carousel-slide {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.9s ease;
+  }
+  .carousel-slide.active { opacity: 1; }
+
+  /* bottom bar */
+  .bottom-bar {
+    background: #000;
+    border-top: 0.5px solid rgba(255,255,255,0.1);
+    padding: 22px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+    font-weight: 400;
+  }
+</style>
+
+<div class="site">
+
+  <section class="hero" id="hero">
+
+    <img class="hero-logo" id="logo" src="sktrlogoweb.svg" alt="Sktr.">
+    <div class="hero-scroll">↓ scroll</div>
+  </section>
+
+  <section class="section-flash" id="flash">
+    <object id="flash-obj" type="image/svg+xml" data="sktrweb.svg"></object>
+  </section>
+
+  <section class="section-origen">
+    <div class="origen-header">
+      <p class="origen-tag">001 / Origen</p>
+      <img class="origen-logo-accent" src="sktrlogoweb2.svg" alt="Sktr.">
+    </div>
+    <h2 class="origen-title">Origen.</h2>
+
+    <div class="origen-block">
+      <p>Sektor es un espacio creado para darle a la musica el lugar que merece. Un punto de encuentro donde el sonido construye la experiencia de la noche.</p>
+      <p>Nos inspiramos en la estética del rave underground de los '90 y los '00: espacios sin ornamentos, sin poses, donde lo único que importaba era el sonido y los cuerpos que respondían a él.</p>
+    </div>
+  </section>
+
+  <!-- CARRUSEL — para agregar slides: insertar <img class="carousel-slide" src="nuevo.svg" alt=""> dentro de .carousel-wrap -->
+  <section class="section-carousel" id="carousel">
+    <div class="carousel-wrap">
+      <img class="carousel-slide active" src="sktrweb2.svg" alt="">
+      <img class="carousel-slide" src="sktrweb3.svg" alt="">
+      <img class="carousel-slide" src="sektrwebazul1.svg" alt="">
+      <img class="carousel-slide" src="sektrwebrojo.svg" alt="">
+    </div>
+  </section>
+
+  <div class="bottom-bar">
+    <span>Sktr. 909 © 2026</span>
+    <span>Music on the move, the revolution.</span>
+  </div>
+</div>
+
+<script>
+  const hero = document.getElementById('hero');
+  let isBlue = false;
+
+  function flash() {
+    isBlue = !isBlue;
+    hero.classList.toggle('blue-mode', isBlue);
+    const dur = isBlue ? (Math.random() * 250 + 100) : (Math.random() * 2500 + 1200);
+    setTimeout(flash, dur);
+  }
+
+  setTimeout(flash, 1800);
+
+  // Carousel — para agregar slides insertar <img class="carousel-slide" src="nuevo.svg"> dentro de .carousel-wrap
+  (function() {
+    var slides = document.querySelectorAll('.carousel-wrap .carousel-slide');
+    if (slides.length < 2) return;
+    var idx = 0;
+    setInterval(function() {
+      slides[idx].classList.remove('active');
+      idx = (idx + 1) % slides.length;
+      slides[idx].classList.add('active');
+    }, 3500);
+  })();
+</script>
