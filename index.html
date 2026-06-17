@@ -120,8 +120,8 @@
     font-size: 11px;
     letter-spacing: 5px;
     text-transform: uppercase;
-    color: #fff;
-    opacity: 0.35;
+    color: #ffffff;
+    
     font-weight: 400;
   }
   .origen-logo-accent {
@@ -181,10 +181,205 @@
     align-items: center;
     font-size: 10px;
     letter-spacing: 3px;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.25);
+    
+    color: rgb(255, 254, 254);
     font-weight: 400;
   }
+
+ 
+
+/* SECCION SONIDO SPOTIFY*/
+
+  @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;700;900&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #000;
+    font-family: 'Neue Haas Grotesk Display Pro', 'Barlow', 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  .spotify-section {
+    background: #000;
+    padding: 80px 0 100px;
+    overflow: hidden;
+  }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 8%;
+    margin-bottom: 48px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    font-weight: 400;
+  }
+
+  .section-logo-accent {
+    width: 56px;
+    
+  }
+
+  .carousel-outer {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .carousel-track {
+    display: flex;
+    gap: 24px;
+    padding: 0 8%;
+    transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  .track-card {
+    flex: 0 0 calc(25% - 18px);
+    min-width: 200px;
+    cursor: pointer;
+  }
+
+  .cover-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    background: #111;
+  }
+
+  .cover-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .cover-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .track-card:hover .cover-overlay { opacity: 1; }
+  .track-card:hover .cover-wrap img { transform: scale(1.04); }
+
+  .play-btn {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #fff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, background 0.2s;
+  }
+  .play-btn:hover { transform: scale(1.08); background: #E8001A; }
+  .play-btn svg { fill: #000; width: 20px; height: 20px; margin-left: 3px; }
+  .play-btn:hover svg { fill: #fff; }
+
+  .track-info {
+    margin-top: 14px;
+  }
+
+  .track-name {
+    font-size: clamp(13px, 1.3vw, 15px);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .track-artist {
+    font-size: clamp(11px, 1.1vw, 12px);
+    font-weight: 400;
+    color: rgba(255,255,255,0.4);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    letter-spacing: 0.5px;
+  }
+
+  /* Nav — centrado, sin bordes */
+  .carousel-nav {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    padding: 40px 8% 0;
+  }
+  .nav-btn {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.25);
+    font-size: 22px;
+    cursor: pointer;
+    padding: 8px;
+    transition: color 0.2s;
+    font-family: inherit;
+    line-height: 1;
+  }
+  .nav-btn:hover { color: rgba(255,255,255,0.8); }
+
+  /* Player overlay */
+  .player-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.88);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+  }
+  .player-overlay.open { display: flex; }
+
+  .player-close {
+    position: absolute;
+    top: 32px; right: 40px;
+    font-size: 24px;
+    color: rgba(255,255,255,0.4);
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-family: inherit;
+    line-height: 1;
+    transition: color 0.2s;
+  }
+  .player-close:hover { color: #fff; }
+
+  .player-inner {
+    width: 90%;
+    max-width: 480px;
+  }
+  .player-inner iframe {
+    width: 100%;
+    border-radius: 12px;
+  }
+
+  /* Skeleton */
+  .loading-card { flex: 0 0 calc(25% - 18px); min-width: 200px; }
+  .loading-cover { width: 100%; aspect-ratio: 1/1; background: #1a1a1a; animation: pulse 1.5s infinite; }
+  .loading-text { height: 13px; background: #1a1a1a; margin-top: 14px; width: 70%; animation: pulse 1.5s infinite; }
+  .loading-text.short { width: 45%; margin-top: 6px; }
+  @keyframes pulse { 0%,100%{opacity:.3} 50%{opacity:.7} }
+</style>
+
+
+  
 </style>
 
 <div class="site">
@@ -222,6 +417,36 @@
     </div>
   </section>
 
+  <!--SECCION SONIDO SPOTIFY-->
+  <div class="spotify-section">
+  <div class="section-header">
+    <p class="section-label">002 / Sonido</p>
+    <img class="section-logo-accent" src="sktrlogoweb2.svg" alt="Sktr.">
+  </div>
+
+  <div class="carousel-outer">
+    <div class="carousel-track" id="track">
+      <div class="loading-card"><div class="loading-cover"></div><div class="loading-text"></div><div class="loading-text short"></div></div>
+      <div class="loading-card"><div class="loading-cover"></div><div class="loading-text"></div><div class="loading-text short"></div></div>
+      <div class="loading-card"><div class="loading-cover"></div><div class="loading-text"></div><div class="loading-text short"></div></div>
+      <div class="loading-card"><div class="loading-cover"></div><div class="loading-text"></div><div class="loading-text short"></div></div>
+    </div>
+  </div>
+
+  <div class="carousel-nav">
+    <button class="nav-btn" id="prev">←</button>
+    <button class="nav-btn" id="next">→</button>
+  </div>
+</div>
+
+<div class="player-overlay" id="player-overlay">
+  <button class="player-close" id="player-close">✕</button>
+  <div class="player-inner" id="player-inner"></div>
+</div>
+
+
+  
+<!--SECCION FOOTER-->
   <div class="bottom-bar">
     <span>Sktr. 909 © 2026</span>
     <span>Music on the move, the revolution.</span>
@@ -252,4 +477,97 @@
       slides[idx].classList.add('active');
     }, 1000);
   })();
+
+  //SECCION SONIDO SPOTIFY
+
+  const TRACKS = [
+  { id: '11W5KjH8McaqVEBdYR3wa4', name: 'Got the Reload',          artist: 'Watchers (UK)' },
+  { id: '0getGcd0bZnxGTZp02HPmj', name: "What It's Like",           artist: 'Kieran Morgan' },
+  { id: '46CTMizfBBExPQ3xEg2msf', name: 'Liquid Rocks',             artist: 'Across Boundaries' },
+  { id: '5EylWPZIChpm3yGjstNAnU', name: 'Magnetic',                 artist: "Murphy's Law (UK)" },
+  { id: '64hbFFYpdy1O9u8wDFnL1e', name: 'Return the Phavour',       artist: 'M-High' },
+  { id: '60ywJlIkDq1qxmec3ijrU6', name: 'Same Routine (Radio Edit)', artist: 'M-High' },
+  { id: '3JrNYsMLZxd3R56UzjM4PL', name: 'Pumpin',                   artist: 'Across Boundaries' },
+];
+
+async function fetchCovers() {
+  return Promise.all(TRACKS.map(async t => {
+    try {
+      const res = await fetch(`https://open.spotify.com/oembed?url=https://open.spotify.com/track/${t.id}`);
+      const data = await res.json();
+      return { ...t, thumbnail: data.thumbnail_url };
+    } catch(e) {
+      return { ...t, thumbnail: null };
+    }
+  }));
+}
+
+async function init() {
+  const tracks = await fetchCovers();
+  const container = document.getElementById('track');
+  container.innerHTML = '';
+
+  tracks.forEach(t => {
+    const card = document.createElement('div');
+    card.className = 'track-card';
+    card.innerHTML = `
+      <div class="cover-wrap">
+        ${t.thumbnail
+          ? `<img src="${t.thumbnail}" alt="${t.name}" loading="lazy">`
+          : `<div style="width:100%;height:100%;background:#111"></div>`}
+        <div class="cover-overlay">
+          <button class="play-btn" data-id="${t.id}">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="track-info">
+        <div class="track-name">${t.name}</div>
+        <div class="track-artist">${t.artist}</div>
+      </div>
+    `;
+    card.querySelector('.play-btn').addEventListener('click', () => openPlayer(t.id));
+    container.appendChild(card);
+  });
+
+  initCarousel();
+}
+
+function openPlayer(id) {
+  const overlay = document.getElementById('player-overlay');
+  const inner = document.getElementById('player-inner');
+  inner.innerHTML = `<iframe src="https://open.spotify.com/embed/track/${id}?utm_source=generator&theme=0" height="152" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`;
+  overlay.classList.add('open');
+}
+
+document.getElementById('player-close').addEventListener('click', () => {
+  document.getElementById('player-overlay').classList.remove('open');
+  document.getElementById('player-inner').innerHTML = '';
+});
+
+function initCarousel() {
+  const track = document.getElementById('track');
+  const cards = track.querySelectorAll('.track-card');
+  const total = cards.length;
+  let idx = 0;
+
+  const visible = () => window.innerWidth < 600 ? 1 : window.innerWidth < 900 ? 2 : 4;
+
+  function update() {
+    const cardW = track.querySelector('.track-card').offsetWidth + 24;
+    track.style.transform = `translateX(-${idx * cardW}px)`;
+  }
+
+  document.getElementById('next').addEventListener('click', () => {
+    if (idx < total - visible()) idx++;
+    update();
+  });
+  document.getElementById('prev').addEventListener('click', () => {
+    if (idx > 0) idx--;
+    update();
+  });
+}
+
+init();
+
 </script>
