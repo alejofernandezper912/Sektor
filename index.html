@@ -478,16 +478,16 @@
     }, 1000);
   })();
 
-  //SECCION SONIDO SPOTIFY
+ //SECCION SONIDO SPOTIFY
 
-  const TRACKS = [
-  { id: '11W5KjH8McaqVEBdYR3wa4', name: 'Got the Reload',          artist: 'Watchers (UK)' },
-  { id: '0getGcd0bZnxGTZp02HPmj', name: "What It's Like",           artist: 'Kieran Morgan' },
-  { id: '46CTMizfBBExPQ3xEg2msf', name: 'Liquid Rocks',             artist: 'Across Boundaries' },
-  { id: '5EylWPZIChpm3yGjstNAnU', name: 'Magnetic',                 artist: "Murphy's Law (UK)" },
-  { id: '64hbFFYpdy1O9u8wDFnL1e', name: 'Return the Phavour',       artist: 'M-High' },
+const TRACKS = [
+  { id: '11W5KjH8McaqVEBdYR3wa4', name: 'Got the Reload',           artist: 'Watchers (UK)' },
+  { id: '0getGcd0bZnxGTZp02HPmj', name: "What It's Like",            artist: 'Kieran Morgan' },
+  { id: '46CTMizfBBExPQ3xEg2msf', name: 'Liquid Rocks',              artist: 'Across Boundaries' },
+  { id: '5EylWPZIChpm3yGjstNAnU', name: 'Magnetic',                  artist: "Murphy's Law (UK)" },
+  { id: '64hbFFYpdy1O9u8wDFnL1e', name: 'Return the Phavour',        artist: 'M-High' },
   { id: '60ywJlIkDq1qxmec3ijrU6', name: 'Same Routine (Radio Edit)', artist: 'M-High' },
-  { id: '3JrNYsMLZxd3R56UzjM4PL', name: 'Pumpin',                   artist: 'Across Boundaries' },
+  { id: '3JrNYsMLZxd3R56UzjM4PL', name: 'Pumpin',                    artist: 'Across Boundaries' },
 ];
 
 async function fetchCovers() {
@@ -550,22 +550,68 @@ function initCarousel() {
   const cards = track.querySelectorAll('.track-card');
   const total = cards.length;
   let idx = 0;
+  let startX = 0;
+  let isDragging = false;
+  let dragOffset = 0;
 
   const visible = () => window.innerWidth < 600 ? 1 : window.innerWidth < 900 ? 2 : 4;
+  const cardW = () => track.querySelector('.track-card').offsetWidth + 24;
 
-  function update() {
-    const cardW = track.querySelector('.track-card').offsetWidth + 24;
-    track.style.transform = `translateX(-${idx * cardW}px)`;
+  function update(offset = 0) {
+    track.style.transition = offset ? 'none' : 'transform 0.5s cubic-bezier(0.4,0,0.2,1)';
+    track.style.transform = `translateX(${-idx * cardW() + offset}px)`;
   }
 
-  document.getElementById('next').addEventListener('click', () => {
-    if (idx < total - visible()) idx++;
+  function clamp(val) {
+    return Math.max(0, Math.min(val, total - visible()));
+  }
+
+  // FLECHAS
+  document.getElementById('next').addEventListener('click', () => { idx = clamp(idx + 1); update(); });
+  document.getElementById('prev').addEventListener('click', () => { idx = clamp(idx - 1); update(); });
+
+  // MOUSE DRAG
+  track.addEventListener('mousedown', e => {
+    isDragging = true;
+    startX = e.clientX;
+    dragOffset = 0;
+    track.style.cursor = 'grabbing';
+  });
+
+  window.addEventListener('mousemove', e => {
+    if (!isDragging) return;
+    dragOffset = e.clientX - startX;
+    update(dragOffset);
+  });
+
+  window.addEventListener('mouseup', () => {
+    if (!isDragging) return;
+    isDragging = false;
+    track.style.cursor = '';
+    if (dragOffset < -60) idx = clamp(idx + 1);
+    else if (dragOffset > 60) idx = clamp(idx - 1);
     update();
   });
-  document.getElementById('prev').addEventListener('click', () => {
-    if (idx > 0) idx--;
+
+  // TOUCH SWIPE
+  track.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+    dragOffset = 0;
+  }, { passive: true });
+
+  track.addEventListener('touchmove', e => {
+    dragOffset = e.touches[0].clientX - startX;
+    update(dragOffset);
+  }, { passive: true });
+
+  track.addEventListener('touchend', () => {
+    if (dragOffset < -50) idx = clamp(idx + 1);
+    else if (dragOffset > 50) idx = clamp(idx - 1);
     update();
   });
+
+  // Evitar que el drag dispare el click del play
+  track.addEventListener('dragstart', e => e.preventDefault());
 }
 
 init();
