@@ -217,187 +217,177 @@
 
  
 
-/* SECCION SONIDO SPOTIFY*/
-
-  @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;700;900&display=swap');
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    background: #000;
-    font-family: 'Neue Haas Grotesk Display Pro', 'Barlow', 'Helvetica Neue', Arial, sans-serif;
-  }
-
-  .spotify-section {
-    background: #000;
-    padding: 80px 0 100px;
-    overflow: hidden;
-  }
-
-  .section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 8%;
-    margin-bottom: 48px;
-  }
-
-  .section-label {
-    font-size: 11px;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.35);
-    font-weight: 400;
-  }
-
-  .section-logo-accent {
-    width: 56px;
-    
-  }
-
-  .carousel-outer {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-  }
-
-  .carousel-track {
-    display: flex;
-    gap: 24px;
-    padding: 0 8%;
-    transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
-  }
-
-  .track-card {
-    flex: 0 0 calc(25% - 18px);
-    min-width: 200px;
-    cursor: pointer;
-  }
-
-  .cover-wrap {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 1/1;
-    overflow: hidden;
-    background: #111;
-  }
-
-  .cover-wrap img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.4s ease;
-  }
-
-  .cover-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  .track-card:hover .cover-overlay { opacity: 1; }
-  .track-card:hover .cover-wrap img { transform: scale(1.04); }
-
-  .play-btn {
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    background: #fff;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.2s ease, background 0.2s;
-  }
-  .play-btn:hover { transform: scale(1.08); background: #E8001A; }
-  .play-btn svg { fill: #000; width: 20px; height: 20px; margin-left: 3px; }
-  .play-btn:hover svg { fill: #fff; }
-
-  .track-info {
-    margin-top: 14px;
-  }
-
-  .track-name {
-    font-size: clamp(13px, 1.3vw, 15px);
-    font-weight: 300;
-    color: #fff;
-    line-height: 1.2;
-    margin-bottom: 5px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .track-artist {
-    font-size: clamp(11px, 1.1vw, 12px);
-    font-weight: 200;
-    color: rgba(255,255,255,0.4);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    letter-spacing: 0.5px;
-  }
-
-  /* Nav — centrado, sin bordes */
-  .carousel-nav {
-    display: flex;
-    justify-content: center;
-    gap: 32px;
-    padding: 40px 8% 0;
-  }
-  .nav-btn {
-    background: none;
-    border: none;
-    color: rgba(255,255,255,0.25);
-    font-size: 22px;
-    cursor: pointer;
-    padding: 8px;
-    transition: color 0.2s;
-    font-family: inherit;
-    line-height: 1;
-  }
-  .nav-btn:hover { color: rgba(255,255,255,0.8); }
-
-  /* Player overlay */
-  .player-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.88);
-    z-index: 100;
-    align-items: center;
-    justify-content: center;
-  }
-  .player-overlay.open { display: flex; }
-
-  .player-close {
-    position: absolute;
-    top: 32px; right: 40px;
-    font-size: 24px;
-    color: rgba(255,255,255,0.4);
-    cursor: pointer;
-    background: none;
-    border: none;
-    font-family: inherit;
-    line-height: 1;
-    transition: color 0.2s;
-  }
-  .player-close:hover { color: #fff; }
-
-  .player-inner {
-    width: 90%;
-    max-width: 480px;
-  }
-  .player-inner iframe {
-    width: 100%;
-    border-radius: 12px;
-  }
+/* SECCION SONIDO SPOTIFY */
+.spotify-section {
+  background: #000;
+  padding: 80px 0 100px;
+  overflow: hidden;
+}
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 8%;
+  margin-bottom: 64px;
+}
+.section-label {
+  font-size: 11px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  font-weight: 400;
+}
+.section-logo-accent {
+  width: 56px;
+  opacity: 0.2;
+}
+.carousel-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-60%);
+  z-index: 20;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 16px;
+  opacity: 0.25;
+  transition: opacity 0.25s ease;
+}
+.nav-arrow:hover { opacity: 0.9; }
+.nav-arrow svg {
+  width: 28px;
+  height: 28px;
+  stroke: #fff;
+  stroke-width: 1.2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+#prev-btn { left: 3%; }
+#next-btn { right: 3%; }
+.carousel-stage {
+  position: relative;
+  width: 100%;
+  height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.track-card {
+  position: absolute;
+  width: 220px;
+  cursor: pointer;
+  transition: all 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: bottom center;
+}
+.cover-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  border-radius: 2px;
+  background: #111;
+}
+.cover-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.cover-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.track-card.active:hover .cover-overlay { opacity: 1; }
+.track-card.active:hover .cover-wrap img { transform: scale(1.04); }
+.play-btn {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, background 0.2s;
+}
+.play-btn:hover { transform: scale(1.08); background: #E8001A; }
+.play-btn svg { fill: #000; width: 20px; height: 20px; margin-left: 3px; }
+.play-btn:hover svg { fill: #fff; }
+.card-shadow {
+  width: 80%;
+  height: 20px;
+  margin: 0 auto;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.12) 0%, transparent 70%);
+  border-radius: 50%;
+  transition: all 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.track-info {
+  margin-top: 16px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.track-card.active .track-info {
+  opacity: 1;
+  transform: translateY(0);
+}
+.track-name {
+  font-size: 14px;
+  font-weight: 300;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.track-artist {
+  font-size: 11px;
+  font-weight: 200;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.player-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.88);
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+}
+.player-overlay.open { display: flex; }
+.player-close {
+  position: absolute;
+  top: 32px; right: 40px;
+  font-size: 24px;
+  color: rgba(255,255,255,0.4);
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: inherit;
+  transition: color 0.2s;
+}
+.player-close:hover { color: #fff; }
+.player-inner { width: 90%; max-width: 480px; }
+.player-inner iframe { width: 100%; border-radius: 12px; }
 
   /* Skeleton */
   .loading-card { flex: 0 0 calc(25% - 18px); min-width: 200px; }
@@ -446,25 +436,23 @@
     </div>
   </section>
 
-  <!--SECCION SONIDO SPOTIFY-->
-  <div class="spotify-section">
+  <!-- SECCION SONIDO SPOTIFY -->
+<div class="spotify-section">
   <div class="section-header">
     <p class="section-label">002 / Sonido</p>
     <img class="section-logo-accent" src="sktrlogoweb2.svg" alt="Sktr.">
   </div>
 
-  <div class="carousel-outer">
-    <div class="carousel-track" id="track">
-      <div class="loading-card"><div class="loading-cover"></div><div class="loading-text"></div><div class="loading-text short"></div></div>
-      <div class="loading-card"><div class="loading-cover"></div><div class="loading-text"></div><div class="loading-text short"></div></div>
-      <div class="loading-card"><div class="loading-cover"></div><div class="loading-text"></div><div class="loading-text short"></div></div>
-      <div class="loading-card"><div class="loading-cover"></div><div class="loading-text"></div><div class="loading-text short"></div></div>
-    </div>
-  </div>
+  <div class="carousel-container">
+    <button class="nav-arrow" id="prev-btn">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
 
-  <div class="carousel-nav">
-    <button class="nav-btn" id="prev">←</button>
-    <button class="nav-btn" id="next">→</button>
+    <div class="carousel-stage" id="stage"></div>
+
+    <button class="nav-arrow" id="next-btn">
+      <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
   </div>
 </div>
 
@@ -472,7 +460,6 @@
   <button class="player-close" id="player-close">✕</button>
   <div class="player-inner" id="player-inner"></div>
 </div>
-
 
   
 <!--SECCION FOOTER-->
@@ -523,8 +510,7 @@
     }, 1000);
   })();
 
- //SECCION SONIDO SPOTIFY
-
+ // SECCION SONIDO SPOTIFY
 const TRACKS = [
   { id: '11W5KjH8McaqVEBdYR3wa4', name: 'Got the Reload',           artist: 'Watchers (UK)' },
   { id: '0getGcd0bZnxGTZp02HPmj', name: "What It's Like",            artist: 'Kieran Morgan' },
@@ -534,6 +520,41 @@ const TRACKS = [
   { id: '60ywJlIkDq1qxmec3ijrU6', name: 'Same Routine (Radio Edit)', artist: 'M-High' },
   { id: '3JrNYsMLZxd3R56UzjM4PL', name: 'Pumpin',                    artist: 'Across Boundaries' },
 ];
+
+const N = TRACKS.length;
+let currentIdx = 0;
+let cards = [];
+
+function circularOffset(i, active) {
+  let offset = i - active;
+  if (offset > Math.floor(N / 2)) offset -= N;
+  if (offset < -Math.floor(N / 2)) offset += N;
+  return offset;
+}
+
+function getStyle(offset) {
+  const abs = Math.abs(offset);
+  const gap = window.innerWidth < 600 ? 140 : 200;
+  const scaleMap = [1, 0.82, 0.68, 0.56];
+  const opacMap  = [1, 0.35, 0.15, 0];
+  const zMap     = [10, 5, 2, 0];
+  if (abs >= 3) return { opacity: 0, scale: 0.56, x: offset * gap, zIndex: 0 };
+  return { opacity: opacMap[abs], scale: scaleMap[abs], x: offset * gap, zIndex: zMap[abs] };
+}
+
+function updatePositions() {
+  cards.forEach((card, i) => {
+    const offset = circularOffset(i, currentIdx);
+    const s = getStyle(offset);
+    card.el.style.opacity = s.opacity;
+    card.el.style.transform = `translateX(${s.x}px) scale(${s.scale})`;
+    card.el.style.zIndex = s.zIndex;
+    card.el.style.pointerEvents = Math.abs(offset) <= 2 ? 'auto' : 'none';
+    card.el.classList.toggle('active', offset === 0);
+    card.shadow.style.opacity = offset === 0 ? '1' : '0.25';
+    card.shadow.style.transform = offset === 0 ? 'scaleX(1)' : 'scaleX(0.5)';
+  });
+}
 
 async function fetchCovers() {
   return Promise.all(TRACKS.map(async t => {
@@ -547,42 +568,76 @@ async function fetchCovers() {
   }));
 }
 
-async function init() {
+async function initSpotify() {
   const tracks = await fetchCovers();
-  const container = document.getElementById('track');
-  container.innerHTML = '';
+  const stage = document.getElementById('stage');
 
-  tracks.forEach(t => {
-    const card = document.createElement('div');
-    card.className = 'track-card';
-    card.innerHTML = `
+  tracks.forEach((t, i) => {
+    const wrap = document.createElement('div');
+    wrap.className = 'track-card';
+    wrap.innerHTML = `
       <div class="cover-wrap">
         ${t.thumbnail
           ? `<img src="${t.thumbnail}" alt="${t.name}" loading="lazy">`
           : `<div style="width:100%;height:100%;background:#111"></div>`}
         <div class="cover-overlay">
-          <button class="play-btn" data-id="${t.id}">
+          <button class="play-btn">
             <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
           </button>
         </div>
       </div>
+      <div class="card-shadow"></div>
       <div class="track-info">
         <div class="track-name">${t.name}</div>
         <div class="track-artist">${t.artist}</div>
       </div>
     `;
-    card.querySelector('.play-btn').addEventListener('click', () => openPlayer(t.id));
-    container.appendChild(card);
+    wrap.querySelector('.play-btn').addEventListener('click', e => {
+      e.stopPropagation();
+      if (i === currentIdx) openPlayer(t.id);
+      else { currentIdx = i; updatePositions(); }
+    });
+    wrap.addEventListener('click', () => {
+      if (i !== currentIdx) { currentIdx = i; updatePositions(); }
+    });
+    stage.appendChild(wrap);
+    cards.push({ el: wrap, shadow: wrap.querySelector('.card-shadow') });
   });
 
-  initCarousel();
+  cards.forEach(c => c.el.style.transition = 'none');
+  updatePositions();
+  requestAnimationFrame(() => { cards.forEach(c => c.el.style.transition = ''); });
+
+  document.getElementById('next-btn').addEventListener('click', () => {
+    currentIdx = (currentIdx + 1) % N;
+    updatePositions();
+  });
+  document.getElementById('prev-btn').addEventListener('click', () => {
+    currentIdx = (currentIdx - 1 + N) % N;
+    updatePositions();
+  });
+
+  let startX = 0, dragOffset = 0, dragging = false;
+  stage.addEventListener('mousedown', e => { dragging = true; startX = e.clientX; dragOffset = 0; });
+  window.addEventListener('mousemove', e => { if (!dragging) return; dragOffset = e.clientX - startX; });
+  window.addEventListener('mouseup', () => {
+    if (!dragging) return; dragging = false;
+    if (dragOffset < -60) currentIdx = (currentIdx + 1) % N;
+    else if (dragOffset > 60) currentIdx = (currentIdx - 1 + N) % N;
+    updatePositions();
+  });
+  stage.addEventListener('touchstart', e => { startX = e.touches[0].clientX; dragOffset = 0; }, { passive: true });
+  stage.addEventListener('touchmove',  e => { dragOffset = e.touches[0].clientX - startX; }, { passive: true });
+  stage.addEventListener('touchend',   () => {
+    if (dragOffset < -50) currentIdx = (currentIdx + 1) % N;
+    else if (dragOffset > 50) currentIdx = (currentIdx - 1 + N) % N;
+    updatePositions();
+  });
 }
 
 function openPlayer(id) {
-  const overlay = document.getElementById('player-overlay');
-  const inner = document.getElementById('player-inner');
-  inner.innerHTML = `<iframe src="https://open.spotify.com/embed/track/${id}?utm_source=generator&theme=0" height="152" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`;
-  overlay.classList.add('open');
+  document.getElementById('player-inner').innerHTML = `<iframe src="https://open.spotify.com/embed/track/${id}?utm_source=generator&theme=0" height="152" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`;
+  document.getElementById('player-overlay').classList.add('open');
 }
 
 document.getElementById('player-close').addEventListener('click', () => {
@@ -590,75 +645,6 @@ document.getElementById('player-close').addEventListener('click', () => {
   document.getElementById('player-inner').innerHTML = '';
 });
 
-function initCarousel() {
-  const track = document.getElementById('track');
-  const cards = track.querySelectorAll('.track-card');
-  const total = cards.length;
-  let idx = 0;
-  let startX = 0;
-  let isDragging = false;
-  let dragOffset = 0;
-
-  const visible = () => window.innerWidth < 600 ? 1 : window.innerWidth < 900 ? 2 : 4;
-  const cardW = () => track.querySelector('.track-card').offsetWidth + 24;
-
-  function update(offset = 0) {
-    track.style.transition = offset ? 'none' : 'transform 0.5s cubic-bezier(0.4,0,0.2,1)';
-    track.style.transform = `translateX(${-idx * cardW() + offset}px)`;
-  }
-
-  function clamp(val) {
-    return Math.max(0, Math.min(val, total - visible()));
-  }
-
-  // FLECHAS
-  document.getElementById('next').addEventListener('click', () => { idx = clamp(idx + 1); update(); });
-  document.getElementById('prev').addEventListener('click', () => { idx = clamp(idx - 1); update(); });
-
-  // MOUSE DRAG
-  track.addEventListener('mousedown', e => {
-    isDragging = true;
-    startX = e.clientX;
-    dragOffset = 0;
-    track.style.cursor = 'grabbing';
-  });
-
-  window.addEventListener('mousemove', e => {
-    if (!isDragging) return;
-    dragOffset = e.clientX - startX;
-    update(dragOffset);
-  });
-
-  window.addEventListener('mouseup', () => {
-    if (!isDragging) return;
-    isDragging = false;
-    track.style.cursor = '';
-    if (dragOffset < -60) idx = clamp(idx + 1);
-    else if (dragOffset > 60) idx = clamp(idx - 1);
-    update();
-  });
-
-  // TOUCH SWIPE
-  track.addEventListener('touchstart', e => {
-    startX = e.touches[0].clientX;
-    dragOffset = 0;
-  }, { passive: true });
-
-  track.addEventListener('touchmove', e => {
-    dragOffset = e.touches[0].clientX - startX;
-    update(dragOffset);
-  }, { passive: true });
-
-  track.addEventListener('touchend', () => {
-    if (dragOffset < -50) idx = clamp(idx + 1);
-    else if (dragOffset > 50) idx = clamp(idx - 1);
-    update();
-  });
-
-  // Evitar que el drag dispare el click del play
-  track.addEventListener('dragstart', e => e.preventDefault());
-}
-
-init();
+initSpotify();
 
 </script>
